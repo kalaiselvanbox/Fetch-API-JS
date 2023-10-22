@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Fetch API</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #e8e3e3;
+        
+    }
+
+    .carousel-inner {
+        height: 100%;
+        background-color: hsla(240, 25%, 60%, 0.333);
+        border-image-source: url('./image/border.png');
+        border-image-repeat: stretch;
+        border-image-slice: 30;
+        border-image-width: 10px;
+        border-image-outset: 10px;
+    }
+
+    .caro {
+        background: linear-gradient(rgba(248, 248, 248, 0.7), rgba(133, 115, 115, 0.7)), url(/image/fbg.jpeg);
+        /* background-image: url(./image/plant5.jpeg); */
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    /* Carousel base class */
+    .carousel {
+        height: 500px;
+    }
+
+    /* Declare heights because of positioning of img element */
+    .carousel .carousel-item {
+        height: 500px;
+        background-color: #777;
+        margin-top: 0px;
+    }
+
+    .carousel-inner>.carousel-item>img {
+        position: relative;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+    }
+
+    .fcard {
+        max-width: 300px;
+    }
+
+    input,
+    textarea {
+        background-color: #f8f1f1 !important
+    }
+
+    @media screen and (max-width : 767px) {
+        .carousel {
+            height: 400px;
+        }
+
+        .carousel .carousel-item {
+            height: 400px;
+            background-color: #777;
+            margin-top: 0px;
+        }
+    }
+
+    @media screen and (max-width : 589px) {
+        .carousel {
+            height: 40vh;
+        }
+
+        .carousel .carousel-item {
+            height: 40vh;
+            background-color: #777;
+            margin-top: 0px;
+        }
+    }
+</style>
+
+<body>
+    <div class=".container">
+        <nav class="z-3 navbar position-sticky top-0" style="background: rgb(204, 183, 199)">
+            <div class="container-fluid justify-content-around">
+
+                <a class="navbar-brand" data-bs-toggle="modal" data-bs-target="#myModal" href="#">
+                    <span class="text-success-emphasis"><strong>fetch API</strong></span>
+                </a>
+                <!-- nav item start -->
+                <ul class="nav justify-content-end d-none d-md-flex ">
+                    <li class="nav-item"><a class="nav-link active px-2 text-success-emphasis" aria-current="page"
+                            href="./index.html"><strong>Home</strong></a></li>
+                    <li class="nav-item"><a class="nav-link px-2 text-success-emphasis"
+                            href="./Register.html"><strong>Register</strong></a>
+                    <li class="nav-item"><a class="nav-link px-2 text-success-emphasis"
+                            href="./login.html"><strong>login</strong></a>
+                    </li>
+                </ul>
+                <!-- nav item end -->
+
+                <!-- toggle button content start-->
+                <button class="navbar-toggler d-block d-sm-block d-md-none" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title text-success" id="offcanvasNavbarLabel">Kalaivani dragon fruit farm
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item"><a class="nav-link active px-2" aria-current="page" href="./index.html">Home</a>
+                            </li>
+
+                            <li class="nav-item"><a class="nav-link px-2" href="./Register.html">Register</a></li>
+
+                            <li class="nav-item"><a class="nav-link px-2" href="./login.html">Login</a></li>
+                        </ul>
+
+                    </div>
+                    <!-- toggle button content end-->
+                </div>
+        </nav>
+
+        <!-- card start -->
+        <div class="container" style="min-height: 100vh;">
+            <div class="cardContainer row">
+
+            </div>
+        </div>
+        <!-- card end -->
+
+
+        <!-- Footer start -->
+
+        <footer class="bd-footer bg-danger-subtle mt-3">
+            <div class="container py-4 py-md-5 px-4 px-md-3 ">
+                <div class="row">
+                    <div class="col-6 mb-3 d-flex justify-content-around">
+                        <p class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none"
+                            href="/" aria-label="Bootstrap">
+                            <i class="fa-regular fa-envelope fa-beat"></i>&nbsp; &nbsp; <a class="text-success"
+                                href="mailto:kalaiselvanbox@gmail.com">kalaiselvanbox@gmail.com</a>
+                        </p>
+                    </div>
+                    <div class="col-6 mb-3 d-flex justify-content-around">
+                        <p class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none"
+                            href="/" aria-label="Bootstrap">
+                            <i class="fa-solid fa-mobile-screen fa-beat"></i>&nbsp;&nbsp; <a class="text-success"
+                                href="tel:+918667262074">8667262074</a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+        <!-- Footer end -->
+
+
+        <!-- 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script> -->
+        <script src="./script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
